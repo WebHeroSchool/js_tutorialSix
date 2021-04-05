@@ -1,6 +1,9 @@
 let counter = 0;
 let box = document.getElementById('info');
 let button = document.getElementById('button');
+let nxtButton = document.getElementById('nxt-button');
+let prvButton = document.getElementById('prv-button');
+
 
 
 let qstn1 = {
@@ -26,20 +29,31 @@ let qstn4 = {
 
 let qstns = [qstn1, qstn2, qstn3, qstn4];
 
+
 function results() {
   qstns.forEach(function(item) {
     let getAns = prompt(item.question);
     let text = document.createElement('p');
 	  if (item.correctAnswer.toLowerCase() === getAns.toLowerCase()) {
       counter++;
-      box.innerHTML = `Correct answers: ${counter} out of 4`;
+
       text.innerHTML = `Congratulation! Your answer is correct: ${item.correctAnswer}`;
       document.body.appendChild(text);
     } else {
       text.innerHTML = `Sorry, but your answer is incorrect! The correct answer is: ${item.correctAnswer}`;
       document.body.appendChild(text);
     }
+    box.innerHTML = `Correct answers: ${counter} out of 4`;
   })
 }
+
+
+nxtButton.addEventListener('click', () => {
+  console.log();
+})
+
+prvButton.addEventListener('click', () => {
+  console.log();
+})
 
 button.addEventListener('click', () => results())
