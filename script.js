@@ -1,6 +1,7 @@
 let counter = 0;
 let box = document.getElementById('info');
-let button = document.getElementById('button')
+let button = document.getElementById('button');
+
 
 let qstn1 = {
   question: 'Земля самая близкая планета к Солнцу?',
@@ -27,13 +28,16 @@ let qstns = [qstn1, qstn2, qstn3, qstn4];
 
 function results() {
   qstns.forEach(function(item) {
-    let getAns = prompt(item.question)
+    let getAns = prompt(item.question);
+    let text = document.createElement('p');
 	  if (item.correctAnswer.toLowerCase() === getAns.toLowerCase()) {
-      console.log(`Congratulation! Your answer is correct: ${item.correctAnswer}`);
       counter++;
-      box.innerHTML = `Correct answers: ${counter}`;
-    } else if (item.correctAnswer != item.answer) {
-  	  console.log(`Sorry, but your answer is incorrect! The correct answer is: ${item.correctAnswer}`);
+      box.innerHTML = `Correct answers: ${counter} out of 4`;
+      text.innerHTML = `Congratulation! Your answer is correct: ${item.correctAnswer}`;
+      document.body.appendChild(text);
+    } else {
+      text.innerHTML = `Sorry, but your answer is incorrect! The correct answer is: ${item.correctAnswer}`;
+      document.body.appendChild(text);
     }
   })
 }
